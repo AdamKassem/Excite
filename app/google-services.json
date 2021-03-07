@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "931734639339",
+    "project_id": "excite-a1003",
+    "storage_bucket": "excite-a1003.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:931734639339:android:827d35f5db51bdbfe964ae",
+        "android_client_info": {
+          "package_name": "com.example.excite"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "931734639339-mf0h4nk9pepcbub9d1rjq4kjll4ua0th.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDe-AE105_PwmSbT2l3bmVJOwZ76hXd2cQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "931734639339-mf0h4nk9pepcbub9d1rjq4kjll4ua0th.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
