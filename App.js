@@ -6,6 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import schedule from './pages/schedule';
 import home from './pages/home'
+import map from './pages/map'
 const Stack = createStackNavigator();
 
 export default function App() {
