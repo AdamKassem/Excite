@@ -34,7 +34,7 @@ export default home = ({navigation}) => {
     const renderCardItem = ({item}) => {
         return(
             <View style= {[styles.cardItemWrapper, {backgroundColor: item.selected? '#12435A': 'white' , marginLeft: item.id == 1 ? 20 : 0}]}>
-                <Image source = {item.image} style = {styles.cardItemImage}/>
+                <Image source = {{width: 20, height: 20, uri: item.image}} style = {styles.cardItemImage}/>
 
                 <Text style= {styles.cardTitleWrapper}>{item.title}</Text>
 
@@ -77,10 +77,43 @@ export default home = ({navigation}) => {
             
             {/* Cards */}
             <View style={styles.cardWrapper}>
-              <Text style={styles.cardTitle}>EVENTS AROUND YOU</Text>
+              <Text style={styles.cardTitle}>RESTAURANTS</Text>
               <View style={styles.cardListWrapper}>
                 <FlatList
-                  data={cardData}
+                  data={cardData[0]}
+                  renderItem={renderCardItem}
+                  keyExtractor={(item) => item.id}
+                  horizontal={true}
+                />
+              </View>
+            </View>
+            <View style={styles.cardWrapper}>
+              <Text style={styles.cardTitle}>MUSEUMS</Text>
+              <View style={styles.cardListWrapper}>
+                <FlatList
+                  data={cardData[1]}
+                  renderItem={renderCardItem}
+                  keyExtractor={(item) => item.id}
+                  horizontal={true}
+                />
+              </View>
+            </View>
+            <View style={styles.cardWrapper}>
+              <Text style={styles.cardTitle}>TOURIST ATTRACTIONS</Text>
+              <View style={styles.cardListWrapper}>
+                <FlatList
+                  data={cardData[2]}
+                  renderItem={renderCardItem}
+                  keyExtractor={(item) => item.id}
+                  horizontal={true}
+                />
+              </View>
+            </View>
+            <View style={styles.cardWrapper}>
+              <Text style={styles.cardTitle}>CAFES</Text>
+              <View style={styles.cardListWrapper}>
+                <FlatList
+                  data={cardData[3]}
                   renderItem={renderCardItem}
                   keyExtractor={(item) => item.id}
                   horizontal={true}
