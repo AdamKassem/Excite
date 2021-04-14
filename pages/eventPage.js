@@ -118,12 +118,8 @@ import MapView from 'react-native-maps';
                             style = {styles.costAndDistanceWrapper}
                         >
                             <View style = {styles.costWrapper}>
-<<<<<<< HEAD
                                 <Feather name ='dollar-sign' size ={15} style= {{padding: 5, borderRadius: 5, backgroundColor: colors.orangeOp, justifyContent:'center', marginRight:5}}/>
                                 <Text style ={{fontFamily: 'Montserrat-Bold'}}>Cost: $$</Text>
-=======
-                                <Text>Cost: {item.cost}</Text>
->>>>>>> ae77f6519f7fb43f9b493aa295e2a7199b31d371
                             </View>
                             <View style = {styles.distanceWrapper}>
                                 <MaterialCommunityIcons name = 'directions' size = {15} style= {{padding: 5, borderRadius: 5, backgroundColor: colors.orangeOp, justifyContent:'center', marginRight:5}}/>
