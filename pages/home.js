@@ -16,6 +16,7 @@ Feather.loadFont();
 import { useFonts } from 'expo-font';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { color } from 'react-native-reanimated';
+import {LinearGradient} from 'expo-linear-gradient';
 
 export default home = ({navigation}) => {
 
@@ -41,7 +42,7 @@ export default home = ({navigation}) => {
                 navigation.navigate("Event's Page!",{item: item})  
               }}
               >
-              
+                
               <View style= {[styles.cardItemWrapper, {backgroundColor: item.selected? colors.orange: 'white' , marginLeft: item.id == '0' ? 15 : 0}]}>
                   <Image source = {{width: 20, height: 20, uri: item.image}} style = {styles.cardItemImage}/>
                   <View style = {{width: '100%', height: '45%', overflow:'hidden', paddingHorizontal: 10}}>
@@ -58,7 +59,7 @@ export default home = ({navigation}) => {
                     <Feather name="plus" size ={16} style={[styles.plus,{backgroundColor: item.selected? 'white':colors.orange}]}/>
                   </View>*///
 
-
+ 
     return(
         <View style={styles.container}>
         <ScrollView
@@ -69,28 +70,39 @@ export default home = ({navigation}) => {
             <View style={styles.headerWrapper}>
                 <Feather name="menu" size={24} color='#E85C2B' onPress = {() =>
                   navigation.navigate("Menu",{item:item})} />
-                <Image
-                 source={require('../assets/images/Logo.png')}
-                 style={[styles.logo, {marginRight:10}]}
-                />
+                <TouchableOpacity onPress = {()=> navigation.navigate("Home!")}>
+                  <Image
+                  source={require('../assets/images/Logo.png')}
+                  style={[styles.logo, {marginRight:10}]}
+                  />
+                </TouchableOpacity>
             </View>
 
             <Text style = {[styles.line, {marginLeft: 10, marginRight:10}]}></Text>
+
           </SafeAreaView>
+
             {/*generte schedule*/}
 
-            <View style={styles.searchWrapper}>
-              
-              <View style={styles.search}>
-                <Feather name="calendar" size={16} color='black'/>
-                <Text style={styles.searchText}>Generate Schedule</Text>
-              </View>
-            </View>
+            <TouchableOpacity onPress = {()=> navigation.navigate("Home!")}>
+              <LinearGradient
+                colors = {['#F8A300','#F84040']}
+                start = {{x:1, y:0}}
+                end = {{x:0, y:0}} 
+                style={styles.searchWrapper}>
+                
+                  <View style={styles.search}>
+                    <Feather name="calendar" size={16} color='black'/>
+                    <Text style={styles.searchText}>Generate Schedule</Text>
+                  </View>
+                
+              </LinearGradient>
+            </TouchableOpacity>
 
 
-         
+           
             
-            {/* List1 */}
+            {/* List1 */} 
             <View style={styles.cardWrapper}>
               <Text style={styles.cardTitle}>RESTAURANTS</Text>
               
@@ -108,7 +120,7 @@ export default home = ({navigation}) => {
            
             {/* List2 */}
             <View style={styles.cardWrapper}>
-              <Text style={styles.cardTitle}>MUSEUMS</Text>
+              <Text style={styles.cardTitle}>MUSEUMS</Text> 
               <View style={styles.cardListWrapper}>
                 <FlatList
                   data={cardData[1]}
@@ -150,12 +162,40 @@ export default home = ({navigation}) => {
             </View>
 
             
-          
+           
           
          </ScrollView>
-         </View>
+           {/* Bottom bar */}
+        
+        <View style = {styles.bottomBar}>
+              <LinearGradient
+              colors = {['#F8A300','#F84040']}
+              start = {{x:1, y:0}}
+              end = {{x:0, y:0}}
+              style = {styles.gradient}
+              >
+                  {/* Bottom bar comtents*/}
+                  <View style = {styles.bottomContent}>
+                    <Feather name = "map-pin" size = {28,36} color ='white' />
+                    <Feather name = "calendar" size = {36,36} color ='white'/>
+                    <TouchableOpacity 
+                      onPress = {()=>{
+                        navigation.navigate("Home!")
+                      }}>
+                      <Image
+                          source={require('../assets/images/whiteLogo.png')}
+                          style={{width: 36, height: 36}}
+                          />
+                    </TouchableOpacity>
+                    <Feather name = "search" size = {36,36} color ='white' />
+                    <Feather name = "user" size = {36,36} color ='white'/> 
+                  </View>
+              </LinearGradient>
+          </View>
+          
+         </View> 
          
-    );
+    );  
 };
 
 const styles = StyleSheet.create({
@@ -187,7 +227,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     marginTop: 30,
     padding: 20,
-    backgroundColor: colors.subcolor,
+    //backgroundColor: colors.orange,
     //justifyContent:'center',
     borderRadius:50
   },
@@ -211,7 +251,7 @@ const styles = StyleSheet.create({
     //alignItems:'center',
     alignSelf: 'center'
   },
-
+       
   cardWrapper: {
     marginTop: 30,
   },
@@ -243,12 +283,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5CA48',
     marginRight: 20,
     borderRadius: 20,
-    shadowColor: colors.black,
+    /*shadowColor: colors.black,
     shadowOffset: {
       width: 20,
       height: 40,
-    },
-    height: 155,
+    },*/ 
+    height: 155, 
     width: 120,
     
     shadowOpacity: 5,
@@ -303,5 +343,20 @@ const styles = StyleSheet.create({
     alignItems:'center'
   },
 
+  bottomBar: {
+    backgroundColor: '#E5E5E5',
+  },
+
+  bottomContent: {
+    justifyContent: 'space-between',
+    paddingHorizontal: 30,
+    paddingVertical:20,
+    flexDirection:'row'
+  },
   
+  gradient: {
+    borderTopRightRadius: 40,
+    borderTopLeftRadius: 40
+  }
 });
+ 
