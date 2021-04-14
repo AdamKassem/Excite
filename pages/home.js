@@ -1,19 +1,21 @@
 import * as React from 'react';
-import {SafeAreaView, Text, View, StyleSheet, FlatList, Image, ScrollView,TouchableOpacity} from 'react-native';
+import {SafeAreaView, 
+  Text, 
+  View, 
+  StyleSheet, 
+  FlatList,
+  Button, 
+  Image, 
+  ScrollView} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-
-import * as Font from 'expo-font'
-
 import colors from '../assets/colors/colors';
 import cardData from '../assets/data/cardData';
 
 Feather.loadFont();
-MaterialCommunityIcons.loadFont();
-
 
 import { useFonts } from 'expo-font';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { color } from 'react-native-reanimated';
 
 export default home = ({navigation}) => {
 
@@ -33,17 +35,28 @@ export default home = ({navigation}) => {
 
     const renderCardItem = ({item}) => {
         return(
-            <View style= {[styles.cardItemWrapper, {backgroundColor: item.selected? '#12435A': 'white' , marginLeft: item.id == 1 ? 20 : 0}]}>
-                <Image source = {item.image} style = {styles.cardItemImage}/>
-
-                <Text style= {styles.cardTitleWrapper}>{item.title}</Text>
-
-                <View style = {[StyleSheet.cardSelectWrapper, {backgroundColor: item.selected ? 'white' : 'orange'}]}>
-                   <Text>insert nav icon</Text>
-                </View>
-            </View>
+            <TouchableOpacity 
+              key = {item.id}
+              onPress = {()=>{
+                navigation.navigate("Event's Page!",{item: item})  
+              }}
+              >
+              
+              <View style= {[styles.cardItemWrapper, {backgroundColor: item.selected? colors.orange: 'white' , marginLeft: item.id == '0' ? 15 : 0}]}>
+                  <Image source = {{width: 20, height: 20, uri: item.image}} style = {styles.cardItemImage}/>
+                  <View style = {{width: '100%', height: '45%', overflow:'hidden', paddingHorizontal: 10}}>
+                    <Text style= {styles.cardTitleWrapper}>{item.title}</Text>
+                  </View>
+                  
+              </View>   
+              
+            </TouchableOpacity>
         )
     };
+    {/*'add' icon */}
+    /*<View style = {StyleSheet.cardSelectWrapper}>
+                    <Feather name="plus" size ={16} style={[styles.plus,{backgroundColor: item.selected? 'white':colors.orange}]}/>
+                  </View>*///
 
 
     return(
@@ -54,7 +67,8 @@ export default home = ({navigation}) => {
           {/* Header */}
           <SafeAreaView>
             <View style={styles.headerWrapper}>
-                <Feather name="menu" size={24} color='#E85C2B' />
+                <Feather name="menu" size={24} color='#E85C2B' onPress = {() =>
+                  navigation.navigate("Menu",{item:item})} />
                 <Image
                  source={require('../assets/images/Logo.png')}
                  style={[styles.logo, {marginRight:10}]}
@@ -62,25 +76,42 @@ export default home = ({navigation}) => {
             </View>
 
             <Text style = {[styles.line, {marginLeft: 10, marginRight:10}]}></Text>
-
-            {/* Search */}
+          </SafeAreaView>
+            {/*generte schedule*/}
 
             <View style={styles.searchWrapper}>
-              <Feather name="search" size={16} color='black'/>
+              
               <View style={styles.search}>
-                <Text style={styles.searchText}>Search</Text>
+                <Feather name="calendar" size={16} color='black'/>
+                <Text style={styles.searchText}>Generate Schedule</Text>
               </View>
             </View>
 
 
          
             
-            {/* Cards */}
+            {/* List1 */}
             <View style={styles.cardWrapper}>
-              <Text style={styles.cardTitle}>EVENTS AROUND YOU</Text>
+              <Text style={styles.cardTitle}>RESTAURANTS</Text>
+              
+                <View style={styles.cardListWrapper}>
+                  <FlatList
+                    data={cardData[0]}
+                    renderItem={renderCardItem}
+                    keyExtractor={(item) => item.id}
+                    horizontal={true}
+                  />
+                </View>
+         
+            </View>
+
+           
+            {/* List2 */}
+            <View style={styles.cardWrapper}>
+              <Text style={styles.cardTitle}>MUSEUMS</Text>
               <View style={styles.cardListWrapper}>
                 <FlatList
-                  data={cardData}
+                  data={cardData[1]}
                   renderItem={renderCardItem}
                   keyExtractor={(item) => item.id}
                   horizontal={true}
@@ -90,16 +121,49 @@ export default home = ({navigation}) => {
 
             
 
-          </SafeAreaView>
+            {/* List3 */}
+            <View style={styles.cardWrapper}>
+              <Text style={styles.cardTitle}>TOURIST ATTRACTIONS</Text>
+              <View style={styles.cardListWrapper}>
+                <FlatList
+                  data={cardData[2]}
+                  renderItem={renderCardItem}
+                  keyExtractor={(item) => item.id}
+                  horizontal={true}
+                />
+              </View>
+            </View>
+
+            
+            
+            {/* LIST4 */}
+            <View style={styles.cardWrapper}>
+              <Text style={styles.cardTitle}>CAFES</Text>
+              <View style={styles.cardListWrapper}>
+                <FlatList
+                  data={cardData[3]}
+                  renderItem={renderCardItem}
+                  keyExtractor={(item) => item.id}
+                  horizontal={true}
+                />
+              </View>
+            </View>
+
+            
+          
           
          </ScrollView>
          </View>
+         
     );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#E5E5E5',
+    marginTop:35
+    
   },
 
   headerWrapper: {
@@ -116,43 +180,36 @@ const styles = StyleSheet.create({
     borderRadius: 40,
   },
 
-  titlesWrapper: {
-    marginTop: 30,
-    paddingHorizontal: 20,
-  },
-
-  titlesSubtitle: {
-    fontFamily: 'Montserrat-Regular',
-    fontSize: 16,
-    color: colors.textDark,
-  },
-
-  titlesTitle: {
-    fontFamily: 'Montserrat-Bold',
-    fontSize: 32,
-    color: colors.textDark,
-    marginTop: 5,
-  },
-
+ 
   searchWrapper: {
     flexDirection: 'row',
-    alignItems: 'center',
+    alignSelf: 'center',
     paddingHorizontal: 20,
     marginTop: 30,
+    padding: 20,
+    backgroundColor: colors.subcolor,
+    //justifyContent:'center',
+    borderRadius:50
   },
 
   search: {
-    flex: 1,
+    flexDirection:'row',
     marginLeft: 10,
     borderBottomColor: colors.textLight,
-    borderBottomWidth: 2,
+    borderBottomWidth: 1,
+    alignContent:'center',
+    justifyContent:'center'
+    
   },
 
   searchText: {
+    marginLeft:5,
     fontFamily: 'Montserrat-Semibold',
     fontSize: 14,
     marginBottom: 5,
-    color: colors.textLight,
+    color: colors.white,
+    //alignItems:'center',
+    alignSelf: 'center'
   },
 
   cardWrapper: {
@@ -161,15 +218,25 @@ const styles = StyleSheet.create({
 
   cardTitle: {
     fontFamily: 'Montserrat-Bold',
-    fontSize: 16,
+    fontSize: 18,
     paddingHorizontal: 20,
     borderBottomColor: '#F84040',
     borderBottomWidth: 2,
+    marginHorizontal:15,
+    color: 'black'
+  },
+
+  cardTitleWrapper: {
+    paddingVertical:5,
+    alignSelf: 'center',
+    fontFamily: 'Montserrat-Semibold',
+    fontSize: 14,
+    color: color.textDark,
   },
 
   cardListWrapper: {
     paddingTop: 15,
-    paddingBottom: 20,
+    //paddingBottom: 20,
   },
 
   cardItemWrapper: {
@@ -178,18 +245,24 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     shadowColor: colors.black,
     shadowOffset: {
-      width: 0,
-      height: 2,
+      width: 20,
+      height: 40,
     },
-    shadowOpacity: 0.05,
+    height: 155,
+    width: 120,
+    
+    shadowOpacity: 5,
     shadowRadius: 10,
-    elevation: 2,
+    elevation: 4,
+    paddingBottom:10,
+    overflow: 'hidden',
   },
 
   cardItemImage: {
-    width: 60,
-    height: 60,
-    marginTop: 25,
+    width: '100%',
+    height: '65%',
+    borderTopRightRadius:20,
+    borderTopLeftRadius:20,
     alignSelf: 'center',
     marginHorizontal: 20,
   },
@@ -199,6 +272,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat-Medium',
     fontSize: 14,
     marginTop: 10,
+    
   },
 
   cardSelectWrapper: {
@@ -209,11 +283,25 @@ const styles = StyleSheet.create({
     height: 26,
     borderRadius: 26,
     marginBottom: 20,
+    
   },
 
   cardSelectIcon: {
     alignSelf: 'center',
-  }
+  },
+  
+  plus: {
+    padding: 5,
+    backgroundColor: colors.orange,
+    borderRadius: 40,
+    alignSelf: 'center'
+  },
+
+  line : {
+    borderBottomColor: '#F84040',
+    borderBottomWidth: 2,
+    alignItems:'center'
+  },
 
   
 });
