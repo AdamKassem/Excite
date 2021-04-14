@@ -1,0 +1,3 @@
+import cardData from './cardData';
+
+;

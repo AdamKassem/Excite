@@ -111,7 +111,7 @@ import MapView from 'react-native-maps';
                                 <Text style ={{fontFamily: 'Montserrat-Bold'}}>Address: </Text>
                             </View>
                             <View style = {styles.address}>
-                                <Text style ={{fontFamily: 'Montserrat-Semibold'}}>{item.address}</Text>
+                                <Text style ={{fontFamily: 'Montserrat-Semibold', width: 150}}>{item.address}</Text>
                             </View>
                         </View>
                         <View
@@ -119,7 +119,7 @@ import MapView from 'react-native-maps';
                         >
                             <View style = {styles.costWrapper}>
                                 <Feather name ='dollar-sign' size ={15} style= {{padding: 5, borderRadius: 5, backgroundColor: colors.orangeOp, justifyContent:'center', marginRight:5}}/>
-                                <Text style ={{fontFamily: 'Montserrat-Bold'}}>Cost: $$</Text>
+                                <Text style ={{fontFamily: 'Montserrat-Bold'}}>Cost: {item.cost}</Text>
                             </View>
                             <View style = {styles.distanceWrapper}>
                                 <MaterialCommunityIcons name = 'directions' size = {15} style= {{padding: 5, borderRadius: 5, backgroundColor: colors.orangeOp, justifyContent:'center', marginRight:5}}/>
@@ -133,10 +133,13 @@ import MapView from 'react-native-maps';
                         >
                             <View style = {styles.descriptionTitle}>
                                 <Feather name = 'database' size = {15} style= {{padding: 5, borderRadius: 5, backgroundColor: colors.orangeOp, justifyContent:'center', marginRight:5}}/>
-                                <Text style ={{fontFamily: 'Montserrat-Bold',}}>Description: </Text>
+                                <Text style ={{fontFamily: 'Montserrat-Bold',}}>Current Status: </Text>
+                                <Text style ={{fontFamily: 'Montserrat-Regular'}}>{item.openNow}</Text>
                             </View>
-                            <View style = {styles.description}>
-                                <Text style ={{fontFamily: 'Montserrat-Regular'}}>This is a sample description, because google API didn't return any data ahahah kust fill this space to test </Text>
+                            <View style = {styles.descriptionTitle}>
+                                <Feather name = 'database' size = {15} style= {{padding: 5, borderRadius: 5, backgroundColor: colors.orangeOp, justifyContent:'center', marginRight:5}}/>
+                                <Text style ={{fontFamily: 'Montserrat-Bold',}}>Business Status: </Text>
+                                <Text style ={{fontFamily: 'Montserrat-Regular'}}>{item.status}</Text>
                             </View>
                         </View>
 
@@ -352,7 +355,8 @@ import MapView from 'react-native-maps';
         backgroundColor: '#e5e5e5',
         padding: 11,
         borderRadius: 20,
-        justifyContent:'space-between',
+        alignContent: 'center',
+        justifyContent:'flex-start',
         marginBottom: 25,
         borderColor: colors.black,
         borderWidth:2,
@@ -363,14 +367,13 @@ import MapView from 'react-native-maps';
         borderRadius: 15,
         padding: 5,
         paddingHorizontal: 8,
-        alignContent:'center',
         opacity:1,
-        width: 150,
         alignItems:'center',
         flexDirection:'row',
         marginBottom: 10,
         borderWidth: 2,
-        borderColor: colors.orange
+        borderColor: colors.orange,
+       
     },
 
     description: {
@@ -381,19 +384,20 @@ import MapView from 'react-native-maps';
         
         alignContent:'center',
         opacity:1,
-        justifyContent:'center',
+        justifyContent:'flex-start',
         alignItems:'center',
         flexDirection:'row'
     },
     
     addressWrapper:{
-        flexDirection: 'column',
+        flexDirection: 'row',
         marginHorizontal: 13,
         marginTop:  25,
         backgroundColor: '#e5e5e5',
         padding: 11,
         borderRadius: 20,
-        justifyContent:'space-between',
+        justifyContent:'flex-start',
+        textAlignVertical: 'center',
         borderColor: colors.black,
         borderWidth:2,
     },  
@@ -406,7 +410,7 @@ import MapView from 'react-native-maps';
         
         alignContent:'center',
         opacity:1,
-        justifyContent:'center',
+        justifyContent:'space-around',
         alignItems:'center',
         flexDirection:'row'
     },

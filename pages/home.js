@@ -191,7 +191,7 @@ export default home = ({navigation}) => {
                     <Feather name = "user" size = {36,36} color ='white'/> 
                   </View>
               </LinearGradient>
-          </View>
+          </View>  
           
          </View> 
          
@@ -345,7 +345,7 @@ const styles = StyleSheet.create({
 
   bottomBar: {
     backgroundColor: '#E5E5E5',
-  },
+  }, 
 
   bottomContent: {
     justifyContent: 'space-between',
