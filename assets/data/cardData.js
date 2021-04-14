@@ -60,16 +60,33 @@
         var photoRefs = []
         for(var i = 0; i < responseJson.results.length; i++){
           //console.log(responseJson.results[i].name);
+          var costStr = "";
+          for(var j = 0; j < responseJson.results[i].price_level; j++){
+            costStr += "$"
+          }
+          var openNowStr = "";
+          if(!responseJson.results[i].hasOwnProperty('opening_hours')){
+            openNowStr = "Closed"
+          }
+          else if(!responseJson.results[i].opening_hours.open_now){
+            openNowStr = "Closed"
+          }
+          else{
+            openNowStr = "Open"
+          }
           card = {
             id: i.toString(),
             //image: require("../images/outdoor1.png"),
             image: "https://lh3.googleusercontent.com/p/AF1QipMxbRXvky1a-aPDviu2FilAkT3FKt4e2cNY-INp=s1600-h5",
             title: responseJson.results[i].name,
             selected: false,
-            address: 'this is the address of card 1',
-            rating: 5.0,
-            type: 'Outdoor',
+            address: responseJson.results[i].vicinity,
+            rating: responseJson.results[i].rating,
+            type: (responseJson.results[i].types[0].charAt(0).toUpperCase() + responseJson.results[i].types[0].slice(1)).split('_').join(' '),
             typeIcon: 'key',
+            cost: costStr,
+            status: responseJson.results[i].business_status,
+            openNow: openNowStr
           }
 
           cardRow.push(card); //adds each card to the row

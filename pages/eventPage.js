@@ -78,7 +78,7 @@ import MapView from 'react-native-maps';
                    
                         <View style = {styles.costAndDistanceWrapper}>
                             <View style = {styles.costWrapper}>
-                                <Text>cost</Text>
+                                <Text>Cost: {item.cost}</Text>
                             </View>
                             <View style = {styles.distanceWrapper}>
                                 <Text>Distance</Text>
