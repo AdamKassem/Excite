@@ -8,6 +8,7 @@ import {LinearGradient} from 'expo-linear-gradient';
 import schedule from './pages/schedule';
 import home from './pages/home'
 import eventPage from './pages/eventPage'
+import genSchedule from './pages/genSchedule'
 import Feather from 'react-native-vector-icons/Feather';
 
 Feather.loadFont();
@@ -43,6 +44,13 @@ export default function App({navigation}) {
       <Stack.Screen 
         name="Menu" 
         component={eventPage} 
+        options={
+          {headerShown: false,}
+        }
+      />
+      <Stack.Screen 
+        name="Generate Schedule!" 
+        component={genSchedule} 
         options={
           {headerShown: false,}
         }

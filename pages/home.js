@@ -30,7 +30,7 @@ export default home = ({navigation}) => {
   });
   
   if (!loaded) {
-    return null;
+    return null; 
   }
 
 
@@ -84,7 +84,7 @@ export default home = ({navigation}) => {
 
             {/*generte schedule*/}
 
-            <TouchableOpacity onPress = {()=> navigation.navigate("Home!")}>
+            <TouchableOpacity onPress = {()=> navigation.navigate("Generate Schedule!")}>
               <LinearGradient
                 colors = {['#F8A300','#F84040']}
                 start = {{x:1, y:0}}
