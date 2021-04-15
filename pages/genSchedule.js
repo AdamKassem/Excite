@@ -32,10 +32,14 @@ export default genSchedule = ({navigation}) =>{
 
       var typeArray = [];
       var cardArray = [];
+      var photoRefs = [];
+      var imagesReceived = 0;
 
       var generateSchedule = (types, radius) => {
         typeArray = [];
         cardArray = [];
+        photoRefs = [];
+        imagesReceived = 0;
         var prevLoc = "32.9858,-96.760627";
         console.log("\nGenerating Schedule...\n")
         getEvents(0, types.length, prevLoc, radius, types);
@@ -44,7 +48,10 @@ export default genSchedule = ({navigation}) =>{
     
       var getEvents = (i, typeLength, prevLoc, radius, types) => {
         if(i >= typeLength){
-            navigation.navigate("Schedule Result", {item: cardArray})
+            for(var j = 0; j < photoRefs.length; j++){
+                setCardImage(j, photoRefs[j], photoRefs.length);
+            }
+            //navigation.navigate("Schedule Result", {item: cardArray})
             return;
         }
         else{
@@ -66,8 +73,14 @@ export default genSchedule = ({navigation}) =>{
               //Success
               if(responseJson.results.length > 0){
                 var randomChoice = Math.floor(Math.random()*responseJson.results.length);
+
                 console.log(responseJson.results[randomChoice].name);
+
                 prevLoc = responseJson.results[randomChoice].geometry.location.lat+","+responseJson.results[randomChoice].geometry.location.lng;
+                if(responseJson.results[randomChoice].hasOwnProperty("photos")) {
+                    photoRefs.push(responseJson.results[randomChoice].photos[0].photo_reference);
+                  }
+
                 var costStr = "";
                 for(var j = 0; j < responseJson.results[randomChoice].price_level; j++){
                     costStr += "$"
@@ -113,6 +126,35 @@ export default genSchedule = ({navigation}) =>{
             });
         }
     
+      }
+
+      var setCardImage = (i, photoreference, photoCount) => {
+        var url = new URL("https://maps.googleapis.com/maps/api/place/photo?"),
+          params = {
+            key:"AIzaSyAwD4pzdZUnkO1CHCRxrjT_pSA6ONTaL_0", 
+            photoreference: photoreference, 
+            maxheight: 250
+          }
+        Object.keys(params).forEach(key => url.searchParams.append(key, params[key]))
+        //console.log(url);
+        fetch(url, {
+          method: 'GET',
+        })
+          .then((responseImage) => {
+            //Success
+            cardArray[i].image = responseImage.url;
+            imagesReceived++;
+            if(imagesReceived >= photoCount){
+                navigation.navigate("Schedule Result", {item: cardArray})
+            }
+            //console.log("Image url: "+ responseImage.url)
+          })
+          //If response is not in json then in error
+          .catch((error) => {
+            //Error
+            alert("ERROR IN PHOTO CALL "+JSON.stringify(error));
+            console.error(error);
+          });
       }
     
 
