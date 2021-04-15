@@ -15,6 +15,7 @@ Feather.loadFont();
 MaterialCommunityIcons.loadFont();
 import { useFonts } from 'expo-font';
 import MapView from 'react-native-maps';
+import StarRating from 'react-native-star-rating';
 
 
   export default eventPage = ({route, navigation}) =>{
@@ -71,8 +72,20 @@ import MapView from 'react-native-maps';
                         end = {{x:0, y:0}}
                         style = {styles.eventTitleWrapper}>
                         <View style = {{flexDirection:'column'}}>
-                            
-                            <Text style ={styles.eventSubTitle}>Rating: {item.rating} </Text>
+                            <View style ={{flexDirection:'row'}}>
+                                <Text style ={styles.eventSubTitle}>Rating: </Text>
+                                <View style={{height:20, justifyContent: 'center', overflow: 'hidden'}}>
+                                    <StarRating
+                                        disabled={false}
+                                        maxStars={5}
+                                        rating={item.rating}
+                                        fullStar = {require('../assets/images/rating.png')}
+                                        emptyStar= {require('../assets/images/rating2.png')}
+                                        halfStar = {require('../assets/images/rating3.png')}
+                                        starSize = {16}
+                                    />
+                                </View>
+                            </View>
                             <Text style = { styles.eventTitle}>{item.title}</Text>
                             
                         </View>
@@ -229,7 +242,7 @@ import MapView from 'react-native-maps';
         borderWidth: 2,
         borderRadius:20,
         borderColor: colors.black,
-        marginHorizontal: 24,
+        marginHorizontal: 14,
         marginTop: 10,
         paddingHorizontal: 16,
         paddingVertical: 20,

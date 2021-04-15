@@ -145,7 +145,7 @@ export default home = ({navigation}) => {
                 />
               </View>
             </View>
-
+ 
             
             
             {/* LIST4 */}
@@ -157,10 +157,11 @@ export default home = ({navigation}) => {
                   renderItem={renderCardItem}
                   keyExtractor={(item) => item.id}
                   horizontal={true}
+                  style = {{marginBottom: 20}}
                 />
               </View>
             </View>
-
+   
             
            
           
