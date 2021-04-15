@@ -118,7 +118,7 @@
       params = {
         key:"AIzaSyAwD4pzdZUnkO1CHCRxrjT_pSA6ONTaL_0", 
         photoreference: photoreference, 
-        maxheight: 100
+        maxheight: 250
       }
     Object.keys(params).forEach(key => url.searchParams.append(key, params[key]))
     //console.log(url);

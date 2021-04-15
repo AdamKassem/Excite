@@ -137,7 +137,7 @@ import StarRating from 'react-native-star-rating';
                             <View style = {styles.distanceWrapper}>
                                 <MaterialCommunityIcons name = 'directions' size = {15} style= {{padding: 5, borderRadius: 5, backgroundColor: colors.orangeOp, justifyContent:'center', marginRight:5}}/>
                                 <Text style ={{fontFamily: 'Montserrat-Bold'}}>Distance: </Text>
-                                <Text style ={{fontFamily: 'Montserrat-Semibold'}}>500m </Text>
+                                <Text style ={{fontFamily: 'Montserrat-Semibold'}}>&lt;10km </Text>
                             </View>
                         </View>
 
