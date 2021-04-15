@@ -57,7 +57,7 @@ export default function App({navigation}) {
       />
       <Stack.Screen 
         name="Schedule Result" 
-        component={genSchedule} 
+        component={schedule} 
         options={
           {headerShown: false,}
         }

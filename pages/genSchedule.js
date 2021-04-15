@@ -44,7 +44,7 @@ export default genSchedule = ({navigation}) =>{
     
       var getEvents = (i, typeLength, prevLoc, radius, types) => {
         if(i >= typeLength){
-            navigation.navigate("Schedule Result")
+            navigation.navigate("Schedule Result", {item: cardArray})
             return;
         }
         else{
@@ -83,7 +83,7 @@ export default genSchedule = ({navigation}) =>{
                     openNowStr = "Open"
                 }
                 card = {
-                    id: randomChoice.toString(),
+                    id: i.toString(),
                     //image: require("../images/outdoor1.png"),
                     image: "https://lh3.googleusercontent.com/p/AF1QipMxbRXvky1a-aPDviu2FilAkT3FKt4e2cNY-INp=s1600-h5",
                     title: responseJson.results[randomChoice].name,
