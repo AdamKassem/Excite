@@ -55,6 +55,13 @@ export default function App({navigation}) {
           {headerShown: false,}
         }
       />
+      <Stack.Screen 
+        name="Schedule Result" 
+        component={genSchedule} 
+        options={
+          {headerShown: false,}
+        }
+      />
     </Stack.Navigator>
 
   
