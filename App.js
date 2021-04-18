@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
-import {Text,View, SafeAreaView, Image, StyleSheet, TouchableOpacity} from 'react-native';
+import {Text,View, SafeAreaView, Image, StyleSheet, TouchableOpacity,LogBox} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import {LinearGradient} from 'expo-linear-gradient';
@@ -12,6 +12,7 @@ import genSchedule from './pages/genSchedule'
 import Feather from 'react-native-vector-icons/Feather';
 
 Feather.loadFont();
+LogBox.ignoreAllLogs();
 
 import map from './pages/map'
 import colors from './assets/colors/colors';
@@ -51,6 +52,13 @@ export default function App({navigation}) {
       <Stack.Screen 
         name="Generate Schedule!" 
         component={genSchedule} 
+        options={
+          {headerShown: false,}
+        }
+      />
+      <Stack.Screen 
+        name="Schedule Result" 
+        component={schedule} 
         options={
           {headerShown: false,}
         }

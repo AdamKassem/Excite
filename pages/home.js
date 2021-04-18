@@ -68,8 +68,8 @@ export default home = ({navigation}) => {
           {/* Header */}
           <SafeAreaView>
             <View style={styles.headerWrapper}>
-                <Feather name="menu" size={24} color='#E85C2B' onPress = {() =>
-                  navigation.navigate("Menu",{item:item})} />
+                <Feather name="menu" size={24} color='#E85C2B'/>{/*onPress = {() =>
+                  navigation.navigate("Menu",{item:item})} />*/}
                 <TouchableOpacity onPress = {()=> navigation.navigate("Home!")}>
                   <Image
                   source={require('../assets/images/Logo.png')}
@@ -181,7 +181,7 @@ export default home = ({navigation}) => {
                     <Feather name = "calendar" size = {36,36} color ='white'/>
                     <TouchableOpacity 
                       onPress = {()=>{
-                        navigation.navigate("Home!")
+                        navigation.navigate("Home!",cardData)
                       }}>
                       <Image
                           source={require('../assets/images/whiteLogo.png')}
