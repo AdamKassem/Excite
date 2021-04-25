@@ -177,7 +177,7 @@ export default home = ({navigation}) => {
               >
                   {/* Bottom bar comtents*/}
                   <View style = {styles.bottomContent}>
-                    <Feather name = "map-pin" size = {28,36} color ='white' />
+                    <Feather name = "map-pin" size = {28,36} color ='white' onPress = {()=>navigation.navigate("Map",{item:cardData[3]})}/>
                     <Feather name = "calendar" size = {36,36} color ='white'/>
                     <TouchableOpacity 
                       onPress = {()=>{

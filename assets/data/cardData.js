@@ -42,7 +42,7 @@
     var cardRow = [];
     var url = new URL("https://maps.googleapis.com/maps/api/place/nearbysearch/json?"),
       params = {
-        key:"AIzaSyAwD4pzdZUnkO1CHCRxrjT_pSA6ONTaL_0", 
+        key:"AIzaSyCYW0drTYtabjf1zEoAVNyBYZGNkI_FxwQ", 
         location:"32.9858,-96.760627", 
         radius: 10000,
         type: type
@@ -86,7 +86,9 @@
             typeIcon: 'key',
             cost: costStr,
             status: responseJson.results[i].business_status,
-            openNow: openNowStr
+            openNow: openNowStr,
+            lat: responseJson.results[i].geometry.location.lat,
+            long: responseJson.results[i].geometry.location.lng
           }
 
           cardRow.push(card); //adds each card to the row
@@ -116,7 +118,7 @@
   var setCardImage = (i, j, photoreference) => {
     var url = new URL("https://maps.googleapis.com/maps/api/place/photo?"),
       params = {
-        key:"AIzaSyAwD4pzdZUnkO1CHCRxrjT_pSA6ONTaL_0", 
+        key:"AIzaSyCYW0drTYtabjf1zEoAVNyBYZGNkI_FxwQ", 
         photoreference: photoreference, 
         maxheight: 250
       }

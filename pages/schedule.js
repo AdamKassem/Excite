@@ -81,21 +81,29 @@ export default schedule = ({route,navigation}) =>{
                 {/* Header */}
 
                 <SafeAreaView >
-                    <View style={{marginTop:15}}>
-                        <Feather name="chevron-left" size={50} color='#E85C2B' onPress = {() =>
-                        navigation.goBack()} />
-                    </View>
-                  
-                    <View
-                        style = {styles.headWrapper}
-                        >
-                        
-                        <Text style = {[styles.line, {marginLeft: 10, marginRight:10}]}>Here's a Schedule</Text>
-                        <Text style = {[styles.line, {marginLeft: 10, marginRight:10}]}>Crafted For You!</Text>
-                        
-                    </View>
+                  <View style= {styles.headerWrapper}>
+                      <View style={{marginTop:15}}>
+                          <Feather name="chevron-left" size={50} color='#E85C2B' onPress = {() =>
+                          navigation.goBack()} />
+                      </View>
+                    
+                      <View
+                          style = {styles.headWrapper}
+                          >
+                          
+                          <Text style = {[styles.line, {marginLeft: 10, marginRight:10,alignSelf:'center'}]}>Here's a Schedule</Text>
+                          <Text style = {[styles.line, {marginLeft: 10, marginRight:10, alignSelf:'center'}]}>Crafted For You!</Text>
+                          
+                      </View>
 
-                
+                      <TouchableOpacity 
+                                onPress = {()=>{
+                                    navigation.navigate("Map",{item:item})
+                                }}
+                                style={{marginTop:20, marginRight:15}}>
+                            <Feather name = "map-pin" size = {28,36} color='#E85C2B'  />
+                      </TouchableOpacity>
+                </View>
                 
                 
                   <View style={styles.cardListWrapper}>
@@ -121,7 +129,12 @@ export default schedule = ({route,navigation}) =>{
                 >
                     {/* Bottom bar comtents*/}
                     <View style = {styles.bottomContent}>
-                        <Feather name = "map-pin" size = {28,36} color ='white' />
+                        <TouchableOpacity 
+                                onPress = {()=>{
+                                    navigation.navigate("Map",{item:item})
+                                }}>
+                            <Feather name = "map-pin" size = {28,36} color ='white' />
+                          </TouchableOpacity>
                         <Feather name = "calendar" size = {36,36} color ='white'/>
                         <TouchableOpacity 
                             onPress = {()=>{
@@ -233,7 +246,8 @@ const styles =StyleSheet.create({
         paddingBottom:5,
         borderBottomColor: '#F84040',
         borderBottomWidth: 2,
-        paddingHorizontal:30,
+        paddingHorizontal:20,
+        paddingTop:50,
     },
 
     line : {
@@ -286,5 +300,10 @@ const styles =StyleSheet.create({
     gradient: {
       borderTopRightRadius: 40,
       borderTopLeftRadius: 40
+    },
+    headerWrapper:{
+      flexDirection:'row',
+      //justifyContent:'center',
+      
     }
 });

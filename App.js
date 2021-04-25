@@ -63,6 +63,13 @@ export default function App({navigation}) {
           {headerShown: false,}
         }
       />
+      <Stack.Screen 
+        name="Map" 
+        component={map} 
+        options={
+          {headerShown: false,}
+        }
+      />
     </Stack.Navigator>
 
   

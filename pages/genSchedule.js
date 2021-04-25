@@ -71,7 +71,7 @@ export default genSchedule = ({route,navigation} ) =>{
         else{
           var url = new URL("https://maps.googleapis.com/maps/api/place/nearbysearch/json?"),
           params = {
-            key:"AIzaSyAwD4pzdZUnkO1CHCRxrjT_pSA6ONTaL_0", 
+            key:"AIzaSyCYW0drTYtabjf1zEoAVNyBYZGNkI_FxwQ", 
             location: prevLoc, 
             radius: radius,
             type: types[i]
@@ -121,7 +121,9 @@ export default genSchedule = ({route,navigation} ) =>{
                     typeIcon: 'key',
                     cost: costStr,
                     status: responseJson.results[randomChoice].business_status,
-                    openNow: openNowStr
+                    openNow: openNowStr,
+                    lat: responseJson.results[i].geometry.location.lat,
+                    long: responseJson.results[i].geometry.location.lng
                 }
                 cardArray.push(card);
                 console.log("cardArray length: "+cardArray.length);
@@ -145,7 +147,7 @@ export default genSchedule = ({route,navigation} ) =>{
       var setCardImage = (i, photoreference, photoCount) => {
         var url = new URL("https://maps.googleapis.com/maps/api/place/photo?"),
           params = {
-            key:"AIzaSyAwD4pzdZUnkO1CHCRxrjT_pSA6ONTaL_0", 
+            key:"AIzaSyCYW0drTYtabjf1zEoAVNyBYZGNkI_FxwQ", 
             photoreference: photoreference, 
             maxheight: 250
           }
@@ -465,7 +467,7 @@ export default genSchedule = ({route,navigation} ) =>{
                 {/*Generate button */}
                 <TouchableOpacity onPress = {()=> 
                     //{for(var i = 0; i < typeArray.length; i++){console.log(typeArray[i])}}\
-                    {generateSchedule(typeArray,10000);}
+                    {generateSchedule(typeArray,3000);}
                 }
                     >
                 <LinearGradient
