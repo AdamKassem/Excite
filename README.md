@@ -1,7 +1,7 @@
 # EXCITE
 Beat cabin fever by experiencing dynamically generated schedules that take you through a day's worth of regional activities!
 
-##Expo Go: 
+## Expo Go: 
 https://expo.io/@imaadsyed/projects/exite
 
 ## Objective:
