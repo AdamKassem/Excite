@@ -1,6 +1,9 @@
 # EXCITE
 Beat cabin fever by experiencing dynamically generated schedules that take you through a day's worth of regional activities!
 
+##Expo Go: 
+https://expo.io/@imaadsyed/projects/exite
+
 ## Objective:
 How long has it been since we’ve all had an adventure? With current affairs, exploring the outside world has become harder than ever. However, this is no longer the case with Excite - a mobile-app assisting our return to regular life! After months of isolation, users will be able to see, plan, and experience all the amazing opportunities around them. Tailored to each user’s needs, Excite sets up entire day plans which guarantee fun, leisure, and of course, excitement!
 
@@ -62,3 +65,5 @@ Rate Activities:
 -	[Connecting Flutter and Firebase](https://firebase.google.com/docs/flutter/setup)
 -	[Connecting React Native and Firebase](https://blog.jscrambler.com/integrating-firebase-with-react-native/)
 -	[Overview of making API calls](https://snipcart.com/blog/apis-integration-usage-benefits)
+
+
